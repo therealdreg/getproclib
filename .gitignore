@@ -1,5 +1,6 @@
 winxprelease
 *.suo
+tmpdll/
 *.user
 *.userosscache
 *.sln.docstates

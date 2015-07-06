@@ -21,24 +21,20 @@ CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFT
 OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
+#ifdef GETPROCLIB_EXPORTS // when building DLL, target project defines this macro
+#define GETPROCLIB_API __declspec(dllexport)
+#elif defined(GETPROCLIB_IMPORTS) // when using DLL, client project defines this macro
+#define GETPROCLIB_API __declspec(dllimport)
+#else // when building or using target static library, or whatever: define it as nothing
+#define GETPROCLIB_API
+#endif 
+
 #ifndef _GET_PROC_LIB_H__
 #define _GET_PROC_LIB_H__
 
 #include <stdlib.h>
 #include <windows.h>
 #include "prepos.h"
-
-// The following ifdef block is the standard way of creating macros which make exporting 
-// from a DLL simpler. All files within this DLL are compiled with the GETPROCLIB_EXPORTS
-// symbol defined on the command line. This symbol should not be defined on any project
-// that uses this DLL. This way any other project whose source files include this file see 
-// GETPROCLIB_API functions as being imported from a DLL, whereas this DLL sees symbols
-// defined with this macro as being exported.
-#ifdef GETPROCLIB_EXPORTS
-#define GETPROCLIB_API __declspec(dllexport)
-#else
-#define GETPROCLIB_API __declspec(dllimport)
-#endif
 
 #define CONCAT(x, y) x ## y
 #define CONCAT2(x, y) CONCAT(x, y)

@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "getproclib", "getproclib.vcxproj", "{9CDE4A4A-35FD-41C3-9A20-30A5F0EBB473}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "getproclibstatic", "getproclibstatic\getproclibstatic.vcxproj", "{9C41D4F3-BCE5-4E4C-B39D-3EBBA1FDA268}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "getproclibdll", "getproclibdll\getproclibdll.vcxproj", "{8FBDF28E-D4CC-459F-B161-2CC212C2E317}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +13,14 @@ Global
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9CDE4A4A-35FD-41C3-9A20-30A5F0EBB473}.Debug|Win32.ActiveCfg = Debug|Win32
-		{9CDE4A4A-35FD-41C3-9A20-30A5F0EBB473}.Debug|Win32.Build.0 = Debug|Win32
-		{9CDE4A4A-35FD-41C3-9A20-30A5F0EBB473}.Release|Win32.ActiveCfg = Release|Win32
-		{9CDE4A4A-35FD-41C3-9A20-30A5F0EBB473}.Release|Win32.Build.0 = Release|Win32
+		{9C41D4F3-BCE5-4E4C-B39D-3EBBA1FDA268}.Debug|Win32.ActiveCfg = Debug|Win32
+		{9C41D4F3-BCE5-4E4C-B39D-3EBBA1FDA268}.Debug|Win32.Build.0 = Debug|Win32
+		{9C41D4F3-BCE5-4E4C-B39D-3EBBA1FDA268}.Release|Win32.ActiveCfg = Release|Win32
+		{9C41D4F3-BCE5-4E4C-B39D-3EBBA1FDA268}.Release|Win32.Build.0 = Release|Win32
+		{8FBDF28E-D4CC-459F-B161-2CC212C2E317}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8FBDF28E-D4CC-459F-B161-2CC212C2E317}.Debug|Win32.Build.0 = Debug|Win32
+		{8FBDF28E-D4CC-459F-B161-2CC212C2E317}.Release|Win32.ActiveCfg = Release|Win32
+		{8FBDF28E-D4CC-459F-B161-2CC212C2E317}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
