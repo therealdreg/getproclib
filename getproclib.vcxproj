@@ -77,7 +77,8 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <PostBuildEvent>
-      <Command>copy /Y "$(SolutionDir)\getproclib.h" "$(SolutionDir)\Release\getproclib.h"</Command>
+      <Command>copy /Y "$(SolutionDir)\getproclib.h" "$(SolutionDir)\Release\getproclib.h";
+copy /Y "$(SolutionDir)\prepos.h" "$(SolutionDir)\Release\prepos.h"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -85,6 +86,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="getproclib.h" />
+    <ClInclude Include="prepos.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>

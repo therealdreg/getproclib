@@ -27,6 +27,9 @@
     <ClInclude Include="getproclib.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="prepos.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
