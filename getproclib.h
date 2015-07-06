@@ -72,16 +72,13 @@ typedef struct
 
 #define LIB_API_TAB_ENTRY_END {NULL, 0, NULL, 0, true, false}
 
-#define UNICODE_END W
-#define ASCII_END A
-
-LIB_API_TAB_CREATE_t(LPCWSTR, UNICODE_END)
-LIB_API_TAB_CREATE_t(char *, ASCII_END)
+LIB_API_TAB_CREATE_t(LPCWSTR, W)
+LIB_API_TAB_CREATE_t(char *, A)
 
 #ifdef UNICODE
-#define LIB_API_TAB_t CONCAT2(LIB_API_TAB_, UNICODE_END) ## _t
+#define LIB_API_TAB_t CONCAT2(LIB_API_TAB_, W) ## _t
 #else
-#define LIB_API_TAB_t CONCAT2(LIB_API_TAB_, ASCII_END) ## _t
+#define LIB_API_TAB_t CONCAT2(LIB_API_TAB_, A) ## _t
 #endif // !UNICODE
 
 #define LIB_API_TAB_GEN(typef, name, ...) typef name [] = { \
@@ -98,23 +95,14 @@ LIB_API_TAB_CREATE_t(char *, ASCII_END)
 	API_TAB_ENTRY_END \
 };
 
-#define RET_NAME GP_RET_
-
-#define FOREACH_RET(macro) \
-	macro(ERR) \
-	macro(OK)  \
-	macro(ERR_MEMALLOC) \
-	macro(ERR_CONVUNICODE) \
-	macro(ERR_GETADDRLIB) \
-    macro(ERR_GETADDRFUNC)
-
-#define GET_RET_NAME(name) CONCAT2(RET_NAME, name)
-
-#define GEN_ENUM(name) GET_RET_NAME(name),
-
 typedef enum
 {
-	FOREACH_RET(GEN_ENUM)
+	GP_RET_ERR = -1,
+	GP_RET_OK = 0,
+	GP_RET_ERR_MEMALLOC,
+	GP_RET_ERR_CONVUNICODE,
+	GP_RET_ERR_GETADDRLIB,
+	GP_RET_ERR_GETADDRFUNC
 
 } GP_RET_t;
 

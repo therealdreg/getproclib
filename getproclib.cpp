@@ -35,7 +35,7 @@ GETPROCLIB_API GP_RET_t GetProcW(
 {
 	int i = 0;
 	int x = 0;
-	GP_RET_t returnf = GET_RET_NAME(OK);
+	GP_RET_t returnf = GP_RET_OK;
 
 	// TODO: refactor this...
 	for (i = 0; !lib_api_tabs[i].end && returnf == GP_RET_OK; i++)
@@ -52,7 +52,7 @@ GETPROCLIB_API GP_RET_t GetProcW(
 			{
 				if (!lib_api_tabs[i].optional)
 				{
-					returnf = GET_RET_NAME(ERR_GETADDRLIB);
+					returnf = GP_RET_ERR_GETADDRLIB;
 					if (ext_err != NULL)
 						ext_err->last_ERR = GetLastError();
 				}
@@ -68,7 +68,7 @@ GETPROCLIB_API GP_RET_t GetProcW(
 						{
 							if (!lib_api_tabs[i].api_table[x].optional)
 							{
-								returnf = GET_RET_NAME(ERR_GETADDRFUNC);
+								returnf = GP_RET_ERR_GETADDRFUNC;
 								if (ext_err != NULL)
 									ext_err->last_ERR = GetLastError();
 							}
@@ -84,7 +84,7 @@ GETPROCLIB_API GP_RET_t GetProcW(
 		}
 	}
 
-	if (returnf != GET_RET_NAME(OK))
+	if (returnf != GP_RET_OK)
 	{
 		if (lib_i != NULL)
 			* lib_i = i - 1;
@@ -103,7 +103,7 @@ GETPROCLIB_API GP_RET_t GetProcA(
 	_Inout_opt_ GP_EXT_ERR_t * ext_err
 	)
 {
-	GP_RET_t returnf = GET_RET_NAME(OK);
+	GP_RET_t returnf = GP_RET_OK;
 	WCHAR lib_name[(MAX_PATH * 2) + 1];
 	LPCWSTR ptr_to_name = lib_name;
 	int size_ptr_to_name = sizeof(lib_name);
@@ -130,7 +130,7 @@ GETPROCLIB_API GP_RET_t GetProcA(
 				ptr_to_name = (LPCWSTR)calloc(1, size_buffer);
 				if (ptr_to_name == NULL)
 				{
-					returnf = GET_RET_NAME(ERR_MEMALLOC);
+					returnf = GP_RET_ERR_MEMALLOC;
 					break;
 				}
 				else
@@ -152,7 +152,7 @@ GETPROCLIB_API GP_RET_t GetProcA(
 	if (alloc)
 		free((void *)ptr_to_name);
 
-	if (returnf != GET_RET_NAME(OK))
+	if (returnf != GP_RET_OK)
 	{
 		if (lib_i != NULL)
 			* lib_i = i - 1;
