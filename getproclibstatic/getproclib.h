@@ -42,9 +42,19 @@ OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define FUNC_NAME(name) CONCAT2(START_FUNC, CONCAT2(name, END_FUNC))
 #define FUNC_TYPEF(name) CONCAT2(START_TYPDEF_FUNC, CONCAT2(name, END_TYPDEF_FUNC))
 
+#define FUNC_DEC_PRE_DEF(returnf, typef, name, pre_def, ...) \
+	typedef returnf (typef * FUNC_TYPEF(name)) ( __VA_ARGS__); \
+	pre_def FUNC_TYPEF(name) FUNC_NAME(name);
+
 #define FUNC_DEC(returnf, typef, name, ...) \
 	typedef returnf (typef * FUNC_TYPEF(name)) ( __VA_ARGS__); \
 	FUNC_TYPEF(name) FUNC_NAME(name);
+
+#define SET_PTR_FUNC_VALUE(name, value) FUNC_NAME(name) = (FUNC_TYPEF(name)) value;
+
+#define FUNC_DEC_VALUE(returnf, typef, name, value, ...) \
+	typedef returnf (typef * FUNC_TYPEF(name)) ( __VA_ARGS__); \
+	FUNC_TYPEF(name) SET_PTR_FUNC_VALUE(name, value);
 
 #define API_TAB_ENTRY_END {NULL, NULL, 0, NULL, 0, true}
 
@@ -92,6 +102,9 @@ LIB_API_TAB_CREATE_t(char *, A)
 	__VA_ARGS__ ,\
 	API_TAB_ENTRY_END \
 };
+
+#define API_TAB_ASSERT(ct, name_table, ...) API_TAB(name_table, __VA_ARGS__) \
+	static_assert(ct == ARRAYSIZE(name_table) - 1, "The table nr elements and ct must be the same");
 
 typedef enum
 {
