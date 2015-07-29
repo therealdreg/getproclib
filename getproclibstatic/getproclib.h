@@ -56,6 +56,10 @@ OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 	typedef returnf (typef * FUNC_TYPEF(name)) ( __VA_ARGS__); \
 	FUNC_TYPEF(name) SET_PTR_FUNC_VALUE(name, value);
 
+#define FUNC_DEC_VALUE_PRE_DEF(returnf, typef, name, pre_def, value, ...) \
+	typedef returnf (typef * FUNC_TYPEF(name)) ( __VA_ARGS__); \
+	pre_def FUNC_TYPEF(name) SET_PTR_FUNC_VALUE(name, value);
+
 #define API_TAB_ENTRY_END {NULL, NULL, 0, NULL, 0, true}
 
 typedef struct
